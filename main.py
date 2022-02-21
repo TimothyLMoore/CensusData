@@ -40,20 +40,20 @@ with open("model/LabelBinarizer.pkl", "rb") as f:
 app = FastAPI()
 
 class Census(BaseModel):
-    age: int
-    workclass: str
-    fnlgt: int
-    education: str
-    education_num: int = Field(alias="education-num")
-    marital_status: str = Field(alias="marital-status")
-    occupation: str
-    relationship: str
-    race: str
-    sex: str
-    capital_gain: int = Field(alias="capital-gain")
-    capital_loss: int = Field(alias="capital-loss")
-    hours_per_week: int = Field(alias="hours-per-week")
-    native_country: str = Field(alias="native-country")
+    age: int = Field(example=55)
+    workclass: str = Field(example="Private")
+    fnlgt: int = Field(example=90210)
+    education: str = Field(example="Masters")
+    education_num: int = Field(alias="education-num", example=14)
+    marital_status: str = Field(alias="marital-status", example="Divorced")
+    occupation: str = Field(example="Exec-managerial")
+    relationship: str = Field(example="Not-in-family")
+    race: str = Field(example="White")
+    sex: str = Field(example="Female")
+    capital_gain: int = Field(alias="capital-gain", example=0)
+    capital_loss: int = Field(alias="capital-loss", example=0)
+    hours_per_week: int = Field(alias="hours-per-week", example=40)
+    native_country: str = Field(alias="native-country", example="United-States")
 
     class Config:
         allow_population_by_field_name = True
