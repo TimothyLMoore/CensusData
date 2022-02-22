@@ -40,7 +40,7 @@ jobs:
       uses: iterative/setup-dvc@v1
       
     - name: Pull DVC artifacts 
-      run: dvc pull
+      run: dvc pull -f
       
     - name: Lint with flake8
       run: |
