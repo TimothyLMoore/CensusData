@@ -23,8 +23,9 @@ jobs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        role-to-assume: arn:aws:iam::123456789100:role/my-github-actions-role
-        aws-region: us-east-2
+        aws-access-key-id: ASIA5LEQ2IL5BLB6YUFO
+        aws-secret-access-key: 9jSeYbTeqNj5egk/PNiQJoU8EZNVDuYEWQUkVhSz
+        aws-region: us-east-1
     - name: setup DVC
       uses: iterative/setup-dvc@v1
     - name: DVC Pull
