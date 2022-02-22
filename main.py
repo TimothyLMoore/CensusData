@@ -39,8 +39,9 @@ with open("model/LabelBinarizer.pkl", "rb") as f:
 
 app = FastAPI()
 
+
 class Census(BaseModel):
-    age: int = Field(example=55)
+    age: int = Field(example=56)
     workclass: str = Field(example="Private")
     fnlgt: int = Field(example=90210)
     education: str = Field(example="Masters")
