@@ -1,10 +1,11 @@
 import sys
-sys.path.append('C:/Users/tmoore/PycharmProjects/nd0821-c3-starter-code/starter/ml')
+sys.path.append('./ml')
+sys.path.append('./data')
 from sklearn.model_selection import train_test_split
 import pickle
 import pandas as pd
 import os
-from data.data import process_data
+from data import process_data
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 
