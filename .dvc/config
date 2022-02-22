@@ -1,0 +1,6 @@
+[core]
+    remote = localremote
+['remote "localremote"']
+    url = ./
+['remote "s3remote"']
+    url = S3://udacityc3
