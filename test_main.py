@@ -2,8 +2,9 @@ from fastapi.testclient import TestClient
 from pathlib import Path
 import os
 import sys
-sys.path.append('C:/Users/tmoore/PycharmProjects/nd0821-c3-starter-code/starter/ml')
-sys.path.append('C:/Users/tmoore/PycharmProjects/nd0821-c3-starter-code/starter')
+sys.path.append('./ml')
+sys.path.append('.')
+
 from main import app
 
 client = TestClient(app)
