@@ -41,7 +41,7 @@ app = FastAPI()
 
 
 class Census(BaseModel):
-    age: int = Field(example=56)
+    age: int = Field(example=54)
     workclass: str = Field(example="Private")
     fnlgt: int = Field(example=90210)
     education: str = Field(example="Masters")
