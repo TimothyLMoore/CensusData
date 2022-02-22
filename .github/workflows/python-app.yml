@@ -33,6 +33,7 @@ jobs:
       uses: iterative/setup-dvc@v1
     - name: DVC Pull
       run : |
+        dvc remote add -df s3-bucket s3://tmoore-udacity-lesson3
         dvc pull
     - name: Install dependencies
       run: |
