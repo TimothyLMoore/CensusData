@@ -6,45 +6,38 @@ name: Python application
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
-    
-env:
-  AWS_REGION: us-east-1
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python
+    - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
-        python-version: 3.8
-    #- name: Configure AWS Credentials
-    #  uses: aws-actions/configure-aws-credentials@master
-    #  with:
-    #    aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #    aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    #    aws-region: us-east-1
-    - name: setup DVC
-      uses: iterative/setup-dvc@v1
-    - name: DVC Pull
-      run : |
-        dvc remote add -d myremote s3://tmoore-udacity-lesson3
-        dvc pull
+        python-version: "3.8"
+        
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_Access_Key_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_Secret_Access_Key }}
+        aws-region: us-east-1
+        
+    - name: Setup DVC
+      uses: iterative/setup-dvc@v1
+      
+    - name: Pull DVC artifacts 
+      run: dvc pull
+      
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
@@ -53,4 +46,5 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest unit_tests.py     
+        pytest -vv
+ 
