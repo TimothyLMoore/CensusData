@@ -28,13 +28,13 @@ cat_features = [
     "native-country",
 ]
 
-with open("model/model.pkl", "rb") as f:
+with open("./model/model.pkl", "rb") as f:
     tmodel = pickle.load(f)
 
-with open("model/OneHot.pkl", "rb") as f:
+with open("./model/OneHot.pkl", "rb") as f:
     oneHot = pickle.load(f)
 
-with open("model/LabelBinarizer.pkl", "rb") as f:
+with open("./model/LabelBinarizer.pkl", "rb") as f:
     lb = pickle.load(f)
 
 app = FastAPI()
