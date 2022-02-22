@@ -1,2 +1,6 @@
-['remote "dataremote"']
-    url = s3://tmoore-udacity-lesson3
+[core]
+    remote = localremote
+['remote "localremote"']
+    url = ./
+['remote "s3remote"']
+    url = S3://udacityc3
