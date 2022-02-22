@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 import pickle
 import pandas as pd
 import os
-from data import process_data
+from data.data import process_data
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 
